@@ -24,7 +24,7 @@
       display:inline-flex; align-items:center; justify-content:center;
     }
     .feature p { font-size: .9rem; }
-    .footer-text-lg { font-size: 1.15rem; }
+    .footer-text-lg { font-size: 1.25rem; }
   </style>
 </head>
 <body>
@@ -32,7 +32,7 @@
 
   <!-- Hero -->
   <header class="container text-center flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <img src="logo1.png" class="img-fluid hero-logo mb-4" alt="ThynkTech logo" />
+    <img src="logo-light.png" class="img-fluid hero-logo mb-4" alt="ThynkTech logo" />
     <h1 class="display-5 fw-semibold mb-3">Welcome to ThynkTech</h1>
     <p class="lead col-lg-8 mx-auto">
       We specialise in developing tailored digital solutions for low‑ and middle‑income countries (LMICs), small health enterprises, SMEs, NGOs and communities.
@@ -85,36 +85,17 @@
   <!-- Footer (merged from footer.js) -->
   <footer class="footer mt-auto py-3 bg-black text-center text-white">
     <div class="container d-flex flex-column flex-md-row align-items-center justify-content-center gap-2">
-      <img src="logo1.png" alt="ThynkTech logo" height="38" class="footer-logo-light">
-      <img src="lgoo2.png"  alt="ThynkTech logo" height="38" class="footer-logo-dark d-none">
+      <img src="logo-light.png" alt="ThynkTech logo" height="38" class="footer-logo">
       <span class="fw-semibold footer-text-lg">+233 26 960 9634 © <span id="footer-year"></span></span>
     </div>
   </footer>
   <script>
     // Set current year
     document.getElementById('footer-year').textContent = new Date().getFullYear();
-
-    // Theme-aware logo swap
-    const mql = window.matchMedia('(prefers-color-scheme: dark)');
-    const footer = document.querySelector('.footer');
-    const darkImg  = footer.querySelector('.footer-logo-dark');
-    const lightImg = footer.querySelector('.footer-logo-light');
-    function updateLogo() {
-      if (mql.matches) {
-        lightImg.classList.remove('d-none');
-        darkImg.classList.add('d-none');
-      } else {
-        darkImg.classList.remove('d-none');
-        lightImg.classList.add('d-none');
-      }
-    }
-    updateLogo();
-    mql.addEventListener('change', updateLogo);
   </script>
   <script type="module">
-    import { renderNavbar, renderFooter, getOrgSettings } from './utils/index.js';
+    import { renderNavbar, getOrgSettings } from './utils/index.js';
     renderNavbar();
-    renderFooter();
 
     // Show right CTA buttons based on setup state
     const cta = document.getElementById('cta-buttons');
