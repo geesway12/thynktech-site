@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ThynkTech – Digital Solutions with Purpose</title>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#000000" />
+  <style>
+    :root {
+      --bs-body-bg: #000;
+      --bs-body-color: #fff;
+    }
+    body { min-height: 100vh; display: flex; flex-direction: column; }
+    header { padding-top: 5rem; padding-bottom: 4rem; }
+    .hero-logo { width: 60%; max-width: 280px; }
+    .icon-square {
+      width: 3.5rem; height: 3.5rem; border-radius: .75rem;
+      background: #ffffff10; color:#fff; font-size:1.5rem;
+      display:inline-flex; align-items:center; justify-content:center;
+    }
+    .feature p { font-size: .9rem; }
+  </style>
+</head>
+<body>
+  <!-- Navbar will be injected by utils/navbar.js -->
+
+  <!-- Hero -->
+  <header class="container text-center flex-grow-1 d-flex flex-column align-items-center justify-content-center">
+    <img src="logo1.png" class="img-fluid hero-logo mb-4" alt="ThynkTech logo" />
+    <h1 class="display-5 fw-semibold mb-3">Welcome to ThynkTech</h1>
+    <p class="lead col-lg-8 mx-auto">
+      We specialise in developing tailored digital solutions for low‑ and middle‑income countries (LMICs), small health enterprises, SMEs, NGOs and communities.
+      From custom mobile apps to robust data systems and insightful visualisations, we build tools that make information accessible, actionable and impactful.
+    </p>
+    <p class="col-lg-8 mx-auto">
+      Need a bespoke build, an off‑the‑shelf app, or expert consulting? ThynkTech delivers technology that empowers better outcomes—built with purpose, powered by data.
+    </p>
+    <div class="d-grid gap-2 col-10 col-md-4 mx-auto mt-4" id="cta-buttons">
+      <!-- Buttons are injected by JS based on setup state -->
+    </div>
+  </header>
+
+  <!-- Features -->
+  <section class="container mb-5">
+    <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+      <div class="col text-center feature">
+        <div class="icon-square mb-3"><i class="bi bi-heart-pulse"></i></div>
+        <h6 class="fw-bold mb-2">Digital Health</h6>
+        <p>Cross‑platform mHealth apps and EMR integrations for clinics & public health.</p>
+      </div>
+      <div class="col text-center feature">
+        <div class="icon-square mb-3"><i class="bi bi-shop"></i></div>
+        <h6 class="fw-bold mb-2">SME & Retail</h6>
+        <p>Inventory, sales and analytics tools that keep small businesses running—even offline.</p>
+      </div>
+      <div class="col text-center feature">
+        <div class="icon-square mb-3"><i class="bi bi-people"></i></div>
+        <h6 class="fw-bold mb-2">NGO & Non‑profit</h6>
+        <p>Field‑ready data‑collection and program‑monitoring platforms for impact organisations.</p>
+      </div>
+      <div class="col text-center feature">
+        <div class="icon-square mb-3"><i class="bi bi-building"></i></div>
+        <h6 class="fw-bold mb-2">Faith & Community</h6>
+        <p>Member management and engagement apps for churches, mosques and community groups.</p>
+      </div>
+      <div class="col text-center feature">
+        <div class="icon-square mb-3"><i class="bi bi-bar-chart-line"></i></div>
+        <h6 class="fw-bold mb-2">Data & Insight</h6>
+        <p>Real‑time dashboards and analytics turning raw numbers into smart decisions.</p>
+      </div>
+      <div class="col text-center feature">
+        <div class="icon-square mb-3"><i class="bi bi-lightbulb"></i></div>
+        <h6 class="fw-bold mb-2">Consultancy</h6>
+        <p>Strategy, UX and capacity‑building workshops that bring your digital vision to life.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Universal Footer injected by utils/footer.js -->
+
+  <script type="module">
+    import { renderNavbar, renderFooter, getOrgSettings } from './utils/index.js';
+    renderNavbar();
+    renderFooter();
+
+    // Show right CTA buttons based on setup state
+    const cta = document.getElementById('cta-buttons');
+    const org = getOrgSettings();
+    if (!org || !org.orgName) {
+      cta.innerHTML = `
+        <a id="setupBtn" href="settings.html" class="btn btn-light btn-lg fw-semibold">
+          <i class="bi bi-tools me-2"></i>Set Up Your Store
+        </a>
+        <a id="loginBtn" href="users.html" class="btn btn-outline-light btn-lg fw-semibold">
+          <i class="bi bi-person-circle me-2"></i>Login to My Store
+        </a>
+      `;
+    } else {
+      cta.innerHTML = `
+        <a id="loginBtn" href="users.html" class="btn btn-light btn-lg fw-semibold">
+          <i class="bi bi-person-circle me-2"></i>Go to My Platform
+        </a>
+      `;
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
